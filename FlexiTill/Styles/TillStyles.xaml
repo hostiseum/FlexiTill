@@ -7,7 +7,8 @@
         <Setter Property="Margin" Value="5,5,5,5"></Setter>
         <Setter Property="VerticalContentAlignment" Value="Top"></Setter>
         <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-        <Setter Property="FontSize" Value="18"></Setter>
+        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="BorderBrush" Value="Black"></Setter>
 
     </Style>
 

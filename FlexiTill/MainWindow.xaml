@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:FlexiTill"
         mc:Ignorable="d"
         Title="MainWindow">
-    <Grid Margin="0,0,-192,-203">
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -18,9 +18,9 @@
             <ColumnDefinition >
             </ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <StackPanel Margin="5,5,5,5" Height="auto">
+        <StackPanel  Margin="5,5,5,5" Height="auto">
             <TextBlock Text="£100.00" HorizontalAlignment="Right" FontSize="34"/>
-            <ListView Name="ItemsPurchasedView">
+            <ListView Name="ItemsPurchasedView" >
                 <GridView>
                     <GridView.ColumnHeaderContainerStyle>
                         <Style>
@@ -32,405 +32,669 @@
         </StackPanel>
         <StackPanel Grid.Column="1" Margin="5,5,5,5">
             <TextBlock Text="Kajan Tharmalingam" HorizontalAlignment="Right"/>
+            <!-- SignOff, Breack etc should come here -->
         </StackPanel>
-        <StackPanel Grid.Row="1" Grid.Column="1" Height="auto" >
-            <Button Name="Back">Back</Button>
-            <Grid Height="auto">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*">  
-                    </RowDefinition>
-                    <RowDefinition Height="*">
+        <StackPanel Grid.Row="1" Grid.Column="1" Height="auto"  Grid.RowSpan="2" >
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Name="Navigation"/>
+                <Button Name="Back">Back</Button>
+            </StackPanel>
+            <StackPanel Name="MoreOptionsPage">
+                <Grid Height="auto">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*">
+                        </RowDefinition>
+                        <RowDefinition Height="*">
 
-                    </RowDefinition>
-                    <RowDefinition Height="*">
+                        </RowDefinition>
+                        <RowDefinition Height="*">
 
-                    </RowDefinition>
-                    <RowDefinition>
+                        </RowDefinition>
+                        <RowDefinition>
 
-                    </RowDefinition>
-                    <RowDefinition>
+                        </RowDefinition>
+                        <RowDefinition>
 
-                    </RowDefinition>
-                    <RowDefinition>
+                        </RowDefinition>
+                        <RowDefinition>
 
-                    </RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Button  Style="{StaticResource ButtonStyle}">
-                    <TextBlock TextWrapping="Wrap">
+                        </RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button  Style="{StaticResource ButtonStyle}" >
+                        <TextBlock TextWrapping="Wrap">
                         More Functions
-                    </TextBlock>
-                </Button>
-                <Button  Grid.Row="1" Grid.Column="0" Style="{StaticResource ButtonStyle}">
-                    <TextBlock TextWrapping="Wrap">
-                        Price Query
-                    </TextBlock>
-                </Button>
-                <Button  Grid.Row="2" Style="{StaticResource ButtonStyle}">
-                    <TextBlock TextWrapping="Wrap">
-                        Price Override
-                    </TextBlock>
-                </Button>
-                <Button  Grid.Row="3" Style="{StaticResource ButtonStyle}">
-                    <TextBlock TextWrapping="Wrap">
-                        Receipt %Off
-                    </TextBlock>
-                </Button>
+                        </TextBlock>
+                    </Button>
 
-                <Button  Grid.Row="1" Grid.Column="1" Style="{StaticResource ButtonStyle}">
-                    <TextBlock TextWrapping="Wrap">
-                        Save/Recall
-                    </TextBlock>
-                </Button>
-
-                <Button  Grid.Column="2" Style="{StaticResource ButtonStyle}">
-                    <TextBlock TextWrapping="Wrap">
+                    <Button Style="{StaticResource ButtonStyle}" Grid.Row="0" Grid.Column="2">
+                        <TextBlock TextWrapping="Wrap">
                         More MOPs
-                    </TextBlock>
-                </Button>
-                <Button   Grid.Column="3" Style="{StaticResource ButtonStyle}">
-                    <TextBlock TextWrapping="Wrap">
+                        </TextBlock>
+                    </Button>
+                    <Button  Name="btnArticleKeys"  Style="{StaticResource ButtonStyle}" Click="btnArticleKeys_Click" Grid.Row="0" Grid.Column="3">
+                        <TextBlock TextWrapping="Wrap">
                         Article Key
-                    </TextBlock>
-                </Button>
-                <Button   Grid.Column="4" Style="{StaticResource ButtonStyle}">
-                    <TextBlock TextWrapping="Wrap">
+                        </TextBlock>
+                    </Button>
+                    <Button  Style="{StaticResource ButtonStyle}" Click="Button_Click" Grid.Row="0" Grid.Column="4">
+                        <TextBlock TextWrapping="Wrap">
                         NUM
-                    </TextBlock>
-                </Button>
-                <Button  Grid.Column="5" Style="{StaticResource ButtonStyle}">
-                    <TextBlock TextWrapping="Wrap">
-                        Quality
-                    </TextBlock>
-                </Button>
+                        </TextBlock>
+                    </Button>
+                    <Button  Grid.Column="5" Style="{StaticResource ButtonStyle}" Grid.Row="0" >
+                        <TextBlock TextWrapping="Wrap">
+                        Quantity
+                        </TextBlock>
+                    </Button>
+                </Grid>
+            </StackPanel>
+            <StackPanel Name="NumbersPage">
+                <Grid Height="auto">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*">
+                        </RowDefinition>
+                        <RowDefinition Height="*">
 
-                <Button Content="7"  Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="8"  Grid.Column="3" Grid.Row="1" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="9"  Grid.Column="4" Grid.Row="1" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Item"  Grid.Column="5" Grid.Row="1" Style="{StaticResource ButtonStyle}"></Button>
+                        </RowDefinition>
+                        <RowDefinition Height="*">
 
-                <Button Content="4"  Grid.Column="2" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="5"  Grid.Column="3" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="6"  Grid.Column="4" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Void Line"  Grid.Column="5" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                        </RowDefinition>
+                        <RowDefinition>
 
-                <Button Content="1"  Grid.Column="2" Grid.Row="3" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="2"  Grid.Column="3" Grid.Row="3" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="3"  Grid.Column="4" Grid.Row="3" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Repeat Yes"  Grid.Column="5" Grid.Row="3" Style="{StaticResource ButtonStyle}"></Button>
+                        </RowDefinition>
+                        <RowDefinition>
 
-                <Button Content="8"  Grid.Column="2" Grid.Row="4" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="9" Grid.Column="3" Grid.Row="4" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="00"  Grid.Column="4" Grid.Row="4" Style="{StaticResource ButtonStyle}"></Button>
-                <Button  Grid.Column="5" Grid.Row="4" Style="{StaticResource ButtonStyle}">
-                    <TextBlock TextWrapping="Wrap">
+                        </RowDefinition>
+                        <RowDefinition>
+
+                        </RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button  Grid.Row="0" Grid.Column="0" Style="{StaticResource ButtonStyle}">
+                        <TextBlock TextWrapping="Wrap">
+                        Price Query
+                        </TextBlock>
+                    </Button>
+                    <Button  Grid.Row="1" Style="{StaticResource ButtonStyle}">
+                        <TextBlock TextWrapping="Wrap">
+                        Price Override
+                        </TextBlock>
+                    </Button>
+                    <Button  Grid.Row="2" Style="{StaticResource ButtonStyle}">
+                        <TextBlock TextWrapping="Wrap">
+                        Receipt %Off
+                        </TextBlock>
+                    </Button>
+
+                    <Button  Grid.Row="0" Grid.Column="1" Style="{StaticResource ButtonStyle}">
+                        <TextBlock TextWrapping="Wrap">
+                        Save/Recall
+                        </TextBlock>
+                    </Button>
+                    <Button Content="7"  Grid.Column="2" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="8"  Grid.Column="3" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="9"  Grid.Column="4" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Item"  Grid.Column="5" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+
+                    <Button Content="4"  Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="5"  Grid.Column="3" Grid.Row="1" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="6"  Grid.Column="4" Grid.Row="1" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Void Line"  Grid.Column="5" Grid.Row="1" Style="{StaticResource ButtonStyle}"></Button>
+
+                    <Button Content="1"  Grid.Column="2" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="2"  Grid.Column="3" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="3"  Grid.Column="4" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Repeat Yes"  Grid.Column="5" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+
+                    <Button Content="8"  Grid.Column="2" Grid.Row="3" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="9" Grid.Column="3" Grid.Row="3" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="00"  Grid.Column="4" Grid.Row="3" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button  Grid.Column="5" Grid.Row="3" Style="{StaticResource ButtonStyle}">
+                        <TextBlock TextWrapping="Wrap">
                         Repeat No
-                    </TextBlock>
-                </Button>
+                        </TextBlock>
+                    </Button>
 
-                <Button  Grid.Column="1" Grid.Row="5" Style="{StaticResource ButtonStyle}">
-                    <TextBlock TextWrapping="Wrap">
+                    <Button  Grid.Column="1" Grid.Row="4" Style="{StaticResource ButtonStyle}">
+                        <TextBlock TextWrapping="Wrap">
                         Item discount
-                    </TextBlock>
-                </Button>
-                <Button  Grid.Column="2" Grid.Row="5" Style="{StaticResource ButtonStyle}">
-                    <TextBlock TextWrapping="Wrap">
+                        </TextBlock>
+                    </Button>
+                    <Button  Grid.Column="2" Grid.Row="4" Style="{StaticResource ButtonStyle}">
+                        <TextBlock TextWrapping="Wrap">
                        Keyboard
-                    </TextBlock>
-                </Button>
-            </Grid> 
-        </StackPanel>
-        <StackPanel Name="ArticleKeys">
+                        </TextBlock>
+                    </Button>
+                </Grid>
+            </StackPanel>
+            <StackPanel Name="ArticleKeysPage">
 
-            <Grid Height="auto">
-                <Button Content="Cards"         Grid.Column="1" Grid.Row="3" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Lottery"       Grid.Column="2" Grid.Row="3" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Pay zone"      Grid.Column="3" Grid.Row="3" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="E-Top up"      Grid.Column="4" Grid.Row="3" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Pick and Mix"  Grid.Column="5" Grid.Row="3" Style="{StaticResource ButtonStyle}"></Button>
+                <Grid Height="auto">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*">
+                        </RowDefinition>
+                        <RowDefinition Height="*">
 
-                <Button Content="Outside Sales"     Grid.Column="1" Grid.Row="4" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Bakery Services"   Grid.Column="2" Grid.Row="4" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Fruit and Veg"  	Grid.Column="3" Grid.Row="4" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Entertainment"  	Grid.Column="4" Grid.Row="4" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Department"  		Grid.Column="5" Grid.Row="4" Style="{StaticResource ButtonStyle}"></Button>
-            </Grid>
-        </StackPanel>
+                        </RowDefinition>
+                        <RowDefinition Height="*">
 
-        <StackPanel Name="BakeryServicesPageOne">
-            <Grid Height="auto">
-                <Button Content="Breads"                             Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Bread Roll"                         Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Wraps,Pitta and Nann"               Grid.Column="2" Grid.Row="3" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Crissants,Brioche and Pastries"     Grid.Column="3" Grid.Row="3" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Traditional Toasting"               Grid.Column="4" Grid.Row="3" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Cakes and Pies"                     Grid.Column="5" Grid.Row="3" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Fresh Bakery"                       Grid.Column="1" Grid.Row="4" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Specialist Bakery"                  Grid.Column="2" Grid.Row="4" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Tea Cakes, Fruit Loaves and Scones" Grid.Column="3" Grid.Row="4" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Tea Cakes,Fruit Loaves and Scones"  Grid.Column="4" Grid.Row="4" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Sweet Treats"                       Grid.Column="5" Grid.Row="4" Style="{StaticResource ButtonStyle}"></Button>
-            </Grid >
-        </StackPanel>
+                        </RowDefinition>
+                        <RowDefinition>
 
-        <StackPanel Name="BakeryServicesPageTwo">
-            <Grid Height="auto">
-                <Button Content="Brown  Bread"                       Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="White Bread"                        Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Seeded  Bread"              		 Grid.Column="2" Grid.Row="3" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Dietary   Bread"    				 Grid.Column="3" Grid.Row="3" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Traditional Toasting"               Grid.Column="4" Grid.Row="3" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Half and Half Bread"                Grid.Column="5" Grid.Row="3" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content=" Breads of The World"               Grid.Column="1" Grid.Row="4" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Part Baked  Bread"                  Grid.Column="2" Grid.Row="4" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Bakery  Services" Grid.Column="3" 	 Grid.Row="4" Style="{StaticResource ButtonStyle}"></Button>
-            </Grid>
-        </StackPanel>
+                        </RowDefinition>
+                        <RowDefinition>
 
-        <StackPanel Name="BakeryServicesPageThree">
-            <Grid Height="auto">
-                <Button Content="Bread Roll"        Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Bagets"            Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Bakery  Services"  Grid.Column="2" Grid.Row="3" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Wraps"    			Grid.Column="3" Grid.Row="3" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Pitta"             Grid.Column="4" Grid.Row="3" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Naan"              Grid.Column="5" Grid.Row="3" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Bakery  Services"  Grid.Column="1" Grid.Row="4" Style="{StaticResource ButtonStyle}"></Button>
-            </Grid>
-        </StackPanel>
+                        </RowDefinition>
 
-        <StackPanel Name="BakeryServicesPageFour">
-            <Grid Height="auto">
-                <Button Content="Croissants, Brioche, Pastries"  Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Bakery   Services"              Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-            </Grid>
-        </StackPanel>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
 
-        <StackPanel Name="BakeryServicesPageFive">
-            <Grid Height="auto">
-                <Button Content="Croissants, Brioche, Pastries"   Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Bakery   Services"               Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-            </Grid>
-        </StackPanel>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Cards"         Grid.Column="0" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Lottery"       Grid.Column="1" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Pay zone"      Grid.Column="2" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="E-Top up"      Grid.Column="3" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Pick and Mix"  Grid.Column="4" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
 
-        <StackPanel Name="BakeryServicesPagesix">
-            <Grid Height="auto">
-                <Button Content="Bakery free from"       Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Bakery   Services"      Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-            </Grid>
-        </StackPanel>
+                    <Button Content="Outside Sales"     Grid.Column="5" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Bakery Services" Name="BakeryServices"  Grid.Column="0" Grid.Row="1" Style="{StaticResource ButtonStyle}" Click="BakeryServices_Click"></Button>
+                    <Button Content="Fruit and Veg"  	Grid.Column="1" Grid.Row="1" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Entertainment"  	Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Department"  		Grid.Column="3" Grid.Row="1" Style="{StaticResource ButtonStyle}"></Button>
+                </Grid>
+            </StackPanel>
 
-        <StackPanel Name="BakeryServicesPageSeven">
-            <Grid Height="auto">
-                <Button Content="Tea Cakes, Fruit  Loaves,Scones" Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Bakery   Services"               Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-            </Grid>
-        </StackPanel>
+            <StackPanel Name="BakeryServicesPageOne" Visibility="Hidden">
+                <Grid Height="auto">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*">
+                        </RowDefinition>
+                        <RowDefinition Height="*">
 
-        <StackPanel Name="BakeryServicesPageEight">
-            <Grid Height="auto">
-                <Button Content="Muffins,Buns "       Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Bakery   Services"   Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-            </Grid>
-        </StackPanel>
+                        </RowDefinition>
+                        <RowDefinition Height="*">
 
-        <StackPanel Name="BakeryServicesPageNine">
-            <Grid Height="auto">
-                <Button Content="Celebration Cakes"         Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Small Cakes"               Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Organic Cakes"             Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Cake Slices"               Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Flapjacks and Traybakes"   Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Healthier Cakes"           Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Fruit Pies,Tarts"          Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Seasonal Cakes"            Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Bakery  Services"          Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-            </Grid>
-        </StackPanel>
+                        </RowDefinition>
+                        <RowDefinition>
 
-        <StackPanel Name="Cards">
-            <Grid Height="auto">
-                <Button Content="Cards A"    Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Cards B"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Cards C"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Cards D"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Cards E"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Cards F"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Cards G"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Cards H"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Cards I"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Cards J"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Cards K"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Cards L"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Cards M"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Cards N"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Cards O"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Cards NEXT" Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Cards FF"   Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Cards Menu" Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Department" Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-            </Grid>
-        </StackPanel>
+                        </RowDefinition>
+                        <RowDefinition>
 
-        <StackPanel Name="Departments">
-            <Grid Height="auto">
-                <Button Content="Alcohol"                   Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Beer"                      Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Soft  Drinks"              Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Soft Drinks"               Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Dry  Grocery/Snacks"       Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Tobacco"                   Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Ice Cream"                 Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Chilled Food  Dairy/Deli"  Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Sandwich"                  Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Frozen"                    Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Non Food"                  Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content=" Car Care"                 Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Bread,Cake, Biscuits"      Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Crips,Snacks"              Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Milk/Eggs"                 Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Back"                      Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Department"                Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-            </Grid>
-        </StackPanel>
+                        </RowDefinition>
 
-        <StackPanel Name="Entertainment">
-            <Grid Height="auto">
-                <Button Content="Alcohol"                       Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Entertaiment CD /DVD,Books"    Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Batteries,Cameras"             Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Audio Visual,Computing"        Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Mobile Phone Accessories"      Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content=" Magazines,Newspapers"         Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Stamps"                        Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Parties,Occasions"             Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Office, Art,Crafts"            Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Tights,Stockings"              Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Car Care"                      Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Next"                          Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="DIY"                           Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Valentines Days"               Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Toys"                          Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Entertainment"                 Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Accessories"                   Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="CDs"                           Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="DVDs"                          Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Blu Ray"                       Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content=" Books"                        Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Entertainment"                 Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Cameras"                       Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Batteries"                     Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Entertainment"                 Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content=" Refils Print Paper"           Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Ink Cartridges"                Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Entertainment"                 Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Accessories"                   Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Entertainment"                 Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Magazines"                     Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Newspapers Daily"              Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Newspapers Saturday"           Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Newspapers Sunday"             Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Entertainment"                 Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Breads"                Name="Bread"    Click="Bread_Click"          Grid.Column="0" Grid.Row="0"  Style="{StaticResource ButtonStyle}" ></Button>
+                    <Button Content="Bread Roll"            Name="BreadRoll"   Click="BreadRoll_Click"          Grid.Column="1" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Wraps,Pitta and Nann"      Name="WPN"     Click="WPN_Click"    Grid.Column="2" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Crissants,Brioche and Pastries"    Name="CBP"  Click="CBP_Click" Grid.Column="3" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Traditional Toasting"    Name="TToast" Click="TToast_Click"               Grid.Column="4" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                    <!--<Button Content="Specialist Bakery"     Name="SpecialistBakery" Click="SpecialistBakery_Click"             Grid.Column="1" Grid.Row="1" Style="{StaticResource ButtonStyle}"></Button>-->
+                    <Button Content="Tea Cakes, Fruit Loaves and Scones" Name="TFS" Click="TFS_Click" Grid.Column="2" Grid.Row="1" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Sweet Treats"   Name="SweetTreats" Click="SweetTreats_Click"                    Grid.Column="4" Grid.Row="1" Style="{StaticResource ButtonStyle}"></Button>
+                    
+                    <Button Content="Cakes and Pies"      Name="CakesPies" Click="CakesPies_Click"               Grid.Column="5" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                </Grid >
+            </StackPanel>
+
+            <StackPanel Name="BakeryServicesPageTwo" Visibility="Hidden">
+                
+                    <Grid Height="auto">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*">
+                            </RowDefinition>
+                            <RowDefinition Height="*">
+
+                            </RowDefinition>
+                            <RowDefinition Height="*">
+
+                            </RowDefinition>
+                            <RowDefinition>
+
+                            </RowDefinition>
+                            <RowDefinition>
+
+                            </RowDefinition>
+
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button Content="Brown  Bread"                       Grid.Column="0" Grid.Row="0"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="White Bread"                        Grid.Column="1" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Seeded  Bread"              		 Grid.Column="2" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Dietary   Bread"    				 Grid.Column="3" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Traditional Toasting"               Grid.Column="4" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Half and Half Bread"                Grid.Column="5" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content=" Breads of The World"               Grid.Column="0" Grid.Row="1" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Part Baked  Bread"                  Grid.Column="1" Grid.Row="1" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Bakery  Services" Grid.Column="2" 	 Grid.Row="1" Style="{StaticResource ButtonStyle}"></Button>
+                </Grid>
+            </StackPanel>
+
+            <StackPanel Name="BreadRollPage" Visibility="Hidden">
+                <Grid Height="auto">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*">
+                        </RowDefinition>
+                        <RowDefinition Height="*">
+
+                        </RowDefinition>
+                        <RowDefinition Height="*">
+
+                        </RowDefinition>
+                        <RowDefinition>
+
+                        </RowDefinition>
+                        <RowDefinition>
+
+                        </RowDefinition>
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Bread Roll"        Grid.Column="0" Grid.Row="0"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Bagets"            Grid.Column="1" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Bakery  Services"  Grid.Column="2" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Wraps"    			Grid.Column="3" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Pitta"             Grid.Column="4" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Naan"              Grid.Column="5" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Bakery  Services"  Grid.Column="1" Grid.Row="1" Style="{StaticResource ButtonStyle}"></Button>
+                </Grid>
+            </StackPanel>
+
+            <StackPanel Name="WrapsPage" Visibility="Hidden">
+                <Grid Height="auto">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*">
+                        </RowDefinition>
+                        <RowDefinition Height="*">
+
+                        </RowDefinition>
+                        <RowDefinition Height="*">
+
+                        </RowDefinition>
+                        <RowDefinition>
+
+                        </RowDefinition>
+                        <RowDefinition>
+
+                        </RowDefinition>
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Wraps" Name="Wraps" Click="Wraps_Click"  Grid.Column="0" Grid.Row="0"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Pitta"              Name="Pitta" Click="Pitta_Click" Grid.Column="1" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Naan"              Name="Naan" Click="Naan_Click"  Grid.Column="1" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                </Grid>
+            </StackPanel>
+
+            <StackPanel Name="CrossiantsPage" Visibility="Hidden">
+                <Grid Height="auto">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*">
+                        </RowDefinition>
+                        <RowDefinition Height="*">
+
+                        </RowDefinition>
+                        <RowDefinition Height="*">
+
+                        </RowDefinition>
+                        <RowDefinition>
+
+                        </RowDefinition>
+                        <RowDefinition>
+
+                        </RowDefinition>
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Croissants, Brioche, Pastries" Name="Crossiants" Click="Crossiants_Click"   Grid.Column="0" Grid.Row="0"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Bakery   Services"               Name="BakeryS" Click="BakeryS_Click" Grid.Column="1" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                </Grid>
+            </StackPanel>
+
+            <StackPanel Name="TraditionalToastingPage" Visibility="Hidden">
+                <Grid Height="auto">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*">
+                        </RowDefinition>
+                        <RowDefinition Height="*">
+
+                        </RowDefinition>
+                        <RowDefinition Height="*">
+
+                        </RowDefinition>
+                        <RowDefinition>
+
+                        </RowDefinition>
+                        <RowDefinition>
+
+                        </RowDefinition>
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Crumptes Muffins Pancakes" Name="CrMuPa" Click="CrMuPa_Click"       Grid.Column="0" Grid.Row="0"  Style="{StaticResource ButtonStyle}"></Button>
+                    
+                </Grid>
+            </StackPanel>
+
+            <StackPanel Name="TeaCakesPage" Visibility="Hidden">
+                <Grid Height="auto">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*">
+                        </RowDefinition>
+                        <RowDefinition Height="*">
+
+                        </RowDefinition>
+                        <RowDefinition Height="*">
+
+                        </RowDefinition>
+                        <RowDefinition>
+
+                        </RowDefinition>
+                        <RowDefinition>
+
+                        </RowDefinition>
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Tea Cakes, Fruit  Loaves,Scones" Name="TCFLS" Click="TCFLS_Click"  Grid.Column="0" Grid.Row="0"  Style="{StaticResource ButtonStyle}"></Button>
+                </Grid>
+            </StackPanel>
+
+            <StackPanel Name="CakesPage" Visibility="Hidden">
+                <Grid Height="auto">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*">
+                        </RowDefinition>
+                        <RowDefinition Height="*">
+
+                        </RowDefinition>
+                        <RowDefinition Height="*">
+
+                        </RowDefinition>
+                        <RowDefinition>
+
+                        </RowDefinition>
+                        <RowDefinition>
+
+                        </RowDefinition>
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Celebration Cakes"   Name="CelebrationCake" Click="CelebrationCake_Click"      Grid.Column="0" Grid.Row="0"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Small Cakes"      Name="SmallCakes" Click="SmallCakes_Click"
+                            Grid.Column="1" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Organic Cakes"      Name="OrganicCake" Click="OrganicCake_Click"       Grid.Column="2" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Cake Slices"         Name="CakeSlices" Click="CakeSlices_Click"          Grid.Column="3" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Flapjacks and Traybakes" Name="FlapJack" Click="FlapJack_Click"  Grid.Column="4" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Healthier Cakes"       Name="HealthierCake"  Click="HealthierCake_Click"
+                            Grid.Column="5" Grid.Row="0" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Fruit Pies,Tarts"   Name="FruitPie"  Click="FruitPie_Click"     Grid.Column="0" Grid.Row="1" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Seasonal Cakes"     Name="SeasonalCakes"       Click="SeasonalCakes_Click"    Grid.Column="1" Grid.Row="1" Style="{StaticResource ButtonStyle}"></Button>
+                </Grid>
+            </StackPanel>
+
+            <StackPanel Name="CardsPage" Visibility="Hidden">
+                <Grid Height="auto">
+                    <Button Content="Cards A"    Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Cards B"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Cards C"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Cards D"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Cards E"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Cards F"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Cards G"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Cards H"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Cards I"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Cards J"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Cards K"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Cards L"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Cards M"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Cards N"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Cards O"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Cards NEXT" Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Cards FF"   Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Cards Menu" Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Department" Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                </Grid>
+            </StackPanel>
+
+            <StackPanel Name="DepartmentsPage" Visibility="Hidden">
+                <Grid Height="auto">
+                    <Button Content="Alcohol"                   Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Beer"                      Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Soft  Drinks"              Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Soft Drinks"               Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Dry  Grocery/Snacks"       Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Tobacco"                   Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Ice Cream"                 Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Chilled Food  Dairy/Deli"  Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Sandwich"                  Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Frozen"                    Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Non Food"                  Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content=" Car Care"                 Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Bread,Cake, Biscuits"      Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Crips,Snacks"              Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Milk/Eggs"                 Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Back"                      Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Department"                Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                </Grid>
+            </StackPanel>
+
+            <StackPanel Name="EntertainmentPage" Visibility="Hidden">
+                <Grid Height="auto">
+                    <Button Content="Alcohol"                       Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Entertaiment CD /DVD,Books"    Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Batteries,Cameras"             Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Audio Visual,Computing"        Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Mobile Phone Accessories"      Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content=" Magazines,Newspapers"         Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Stamps"                        Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Parties,Occasions"             Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Office, Art,Crafts"            Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Tights,Stockings"              Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Car Care"                      Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Next"                          Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="DIY"                           Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Valentines Days"               Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Toys"                          Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Entertainment"                 Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Accessories"                   Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="CDs"                           Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="DVDs"                          Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Blu Ray"                       Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content=" Books"                        Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Entertainment"                 Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Cameras"                       Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Batteries"                     Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Entertainment"                 Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content=" Refils Print Paper"           Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Ink Cartridges"                Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Entertainment"                 Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Accessories"                   Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Entertainment"                 Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Magazines"                     Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Newspapers Daily"              Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Newspapers Saturday"           Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Newspapers Sunday"             Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Entertainment"                 Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
 
 
-                <Button Content="Stamps 1st  Class"        Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Stamps 2nd Class"         Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Entertainment"            Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Stamps 1st  Class"        Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Stamps 2nd Class"         Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Entertainment"            Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
 
-                <Button Content="Party Accessories"        Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Baloons, Banners"         Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Wrapping Paper"           Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Entertainment"            Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-
-
-                <Button Content="Filling"                  Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Notebooks,Envelopes"      Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Pen,Pencils,Cases"        Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Posting"                  Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Stationery"               Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Art,Crafts,Decorations"   Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Entertainment"            Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-            </Grid>
-        </StackPanel>
-
-        <StackPanel Name="FruitVeg">
-            <Grid Height="auto">
-                <Button Content="Apples"              Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Pears"               Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Avocado"             Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Bananas"             Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Berries,Currants"    Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Citrus Fruit"        Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Dried Fruit, Nuts"   Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Bakery   Services"   Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Exotic Fruit"        Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="GrapesMelons"        Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Prepared Fruit"      Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Rhubard"             Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Stoned Fruit "       Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Orange Fruit"        Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Mango"               Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Pineapple"           Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Next"                Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Wood Apple Fruit"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Pomegranate"         Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Back"                Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Fruit,Veg"           Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-
-                <Button Content="Baby Vegetable"            Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Garlic,Chillie,Peppers"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Mix Vegetables"            Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Mushrooms"                 Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Onions"                    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Potatoes"                  Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Prepared Vegetables"       Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Root Vegetables"           Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Stir Fry Vegetables"       Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Sqash,Pumpkin,Sweetcorn"   Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="OrganicVegetables"         Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Carrots"                   Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Broccoli"                  Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Fine Beans"                Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Cauliflower "              Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Next"                      Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Parsnips"                  Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Swede"                     Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Back"                      Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Fruit Veg"                 Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-
-                <Button Content="Mixe Peppers"                Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Trimmed Brussels Sprouts"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Spring Onions Bunch"         Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Leeks"                       Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Garlic"                      Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Spinach"                     Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Back"                        Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Swede"                       Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Courgette"                   Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Back"                        Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Fruit Veg"                  Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-            </Grid>
-        </StackPanel>
+                    <Button Content="Party Accessories"        Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Baloons, Banners"         Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Wrapping Paper"           Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Entertainment"            Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
 
 
-        <StackPanel Name="Lottery">
-            <Grid Height="auto">
-                <Button Content="Lotto"               Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Plus 5"              Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Euro Million"        Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Thunderball"         Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Irish Lottery"       Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Health Lottery "     Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-                <Button Content="Lottery"             Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
-            </Grid>
+                    <Button Content="Filling"                  Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Notebooks,Envelopes"      Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Pen,Pencils,Cases"        Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Posting"                  Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Stationery"               Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Art,Crafts,Decorations"   Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Entertainment"            Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                </Grid>
+            </StackPanel>
+
+            <StackPanel Name="FruitVegPage" Visibility="Hidden">
+                <Grid Height="auto">
+                    <Button Content="Apples"              Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Pears"               Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Avocado"             Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Bananas"             Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Berries,Currants"    Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Citrus Fruit"        Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Dried Fruit, Nuts"   Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Bakery   Services"   Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Exotic Fruit"        Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="GrapesMelons"        Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Prepared Fruit"      Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Rhubard"             Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Stoned Fruit "       Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Orange Fruit"        Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Mango"               Grid.Column="5" Grid.Row="4"  Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Pineapple"           Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Next"                Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Wood Apple Fruit"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Pomegranate"         Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Back"                Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Fruit,Veg"           Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+
+                    <Button Content="Baby Vegetable"            Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Garlic,Chillie,Peppers"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Mix Vegetables"            Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Mushrooms"                 Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Onions"                    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Potatoes"                  Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Prepared Vegetables"       Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Root Vegetables"           Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Stir Fry Vegetables"       Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Sqash,Pumpkin,Sweetcorn"   Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="OrganicVegetables"         Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Carrots"                   Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Broccoli"                  Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Fine Beans"                Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Cauliflower "              Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Next"                      Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Parsnips"                  Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Swede"                     Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Back"                      Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Fruit Veg"                 Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+
+                    <Button Content="Mixe Peppers"                Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Trimmed Brussels Sprouts"    Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Spring Onions Bunch"         Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Leeks"                       Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Garlic"                      Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Spinach"                     Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Back"                        Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Swede"                       Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Courgette"                   Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Back"                        Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Fruit Veg"                  Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                </Grid>
+            </StackPanel>
+
+            <StackPanel Visibility="Hidden" Name="LotteryPage">
+                <Grid Height="auto">
+                    <Button Content="Lotto"               Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Plus 5"              Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Euro Million"        Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Thunderball"         Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Irish Lottery"       Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Health Lottery "     Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                    <Button Content="Lottery"             Grid.Column="1" Grid.Row="2" Style="{StaticResource ButtonStyle}"></Button>
+                </Grid>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>
