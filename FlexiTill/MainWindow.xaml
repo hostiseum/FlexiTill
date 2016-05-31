@@ -13,6 +13,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlexiTill"
+        xmlns:myUC="clr-namespace:FlexiTill"
         mc:Ignorable="d"
         Title="MainWindow"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -173,29 +174,30 @@
                             Save/Recall
                     </TextBlock>
                     </Button>
-
-                    <Button Content="7"  Grid.Column="2" Grid.Row="0" Width="90" Height="90" FontSize="24"></Button>
-                    <Button Content="8"  Grid.Column="3" Grid.Row="0" Width="90" Height="90" FontSize="24"></Button>
-                    <Button Content="9"  Grid.Column="4" Grid.Row="0" Width="90" Height="90" FontSize="24"></Button>
+                    
+                    <!--<Button Content="7"  Grid.Column="2" Grid.Row="0" Width="Auto" Height="Auto" FontSize="24" Grid.ColumnSpan="3" Grid.RowSpan="4"></Button>-->
+                    <myUC:ControlBuilder Grid.Column="2" Grid.Row="0" Width="Auto" Height="Auto" FontSize="24" Grid.ColumnSpan="3" Grid.RowSpan="4"></myUC:ControlBuilder>
+                    <!--<Button Content="8"  Grid.Column="3" Grid.Row="0" Width="90" Height="90" FontSize="24"></Button>
+                    <Button Content="9"  Grid.Column="4" Grid.Row="0" Width="90" Height="90" FontSize="24"></Button>-->
                     <Button Content="Item"  Grid.Column="5" Grid.Row="0"   Width="90" Height="90" FontSize="15" Style="{StaticResource MaterialDesignRaisedAccentButton}"></Button>
 
-                    <Button Content="4"  Grid.Column="2" Grid.Row="1" Width="90" Height="90" FontSize="24"></Button>
+                    <!--<Button Content="4"  Grid.Column="2" Grid.Row="1" Width="90" Height="90" FontSize="24"></Button>
                     <Button Content="5"  Grid.Column="3" Grid.Row="1" Width="90" Height="90" FontSize="24" Padding="10px"></Button>
-                    <Button Content="6"  Grid.Column="4" Grid.Row="1" Width="90" Height="90" FontSize="24"></Button>
+                    <Button Content="6"  Grid.Column="4" Grid.Row="1" Width="90" Height="90" FontSize="24"></Button>-->
                     <Button Content="Void Line"  Grid.Column="5" Grid.Row="1"  Width="90" Height="90" FontSize="15" Style="{StaticResource MaterialDesignRaisedAccentButton}"></Button>
 
-                    <Button Content="1"  Grid.Column="2" Grid.Row="2" Width="90" Height="90" FontSize="24" Padding="10px"></Button>
+                    <!--<Button Content="1"  Grid.Column="2" Grid.Row="2" Width="90" Height="90" FontSize="24" Padding="10px"></Button>
                     <Button Content="2"  Grid.Column="3" Grid.Row="2" Width="90" Height="90" FontSize="24" Padding="10px"></Button>
-                    <Button Content="3"  Grid.Column="4" Grid.Row="2" Width="90" Height="90" FontSize="24" Padding="10px"></Button>
+                    <Button Content="3"  Grid.Column="4" Grid.Row="2" Width="90" Height="90" FontSize="24" Padding="10px"></Button>-->
                     <Button   Grid.Column="5" Grid.Row="2"  Width="90" Height="90" FontSize="15" Style="{StaticResource MaterialDesignRaisedAccentButton}">
                         <TextBlock TextWrapping="Wrap"  TextAlignment="Center">
                             Repeat Yes
                         </TextBlock>
                     </Button>
 
-                    <Button Content="00"  Grid.Column="2" Grid.Row="3" Width="90" Height="90" FontSize="24"></Button>
+                    <!--<Button Content="00"  Grid.Column="2" Grid.Row="3" Width="90" Height="90" FontSize="24"></Button>
                     <Button Content="0" Grid.Column="3" Grid.Row="3" Width="90" Height="90" FontSize="24"></Button>
-                    <Button Content="."  Grid.Column="4" Grid.Row="3" Width="90" Height="90" FontSize="24"></Button>
+                    <Button Content="."  Grid.Column="4" Grid.Row="3" Width="90" Height="90" FontSize="24"></Button>-->
                     <Button  Grid.Column="5" Grid.Row="3"  Width="90" Height="90" FontSize="15" Style="{StaticResource MaterialDesignRaisedAccentButton}">
                         <TextBlock TextWrapping="Wrap"  TextAlignment="Center">
                             Repeat No
@@ -1936,9 +1938,9 @@
         
         <StackPanel Orientation="Horizontal" Width="500" Grid.Row="2" HorizontalAlignment="Left">
         <Button Content="£50" Style="{StaticResource MaterialDesignRaisedDarkButton}" Height="95" Width="95"  FontSize="25" Margin="5" ></Button>
-            <Button Content="£20" Style="{StaticResource MaterialDesignRaisedLightButton}" Height="95" Width="95"  FontSize="25" Margin="5"></Button>
+            <Button Content="£20" Style="{StaticResource MaterialDesignRaisedDarkButton}" Height="95" Width="95"  FontSize="25" Margin="5"></Button>
             <Button Content="£10" Style="{StaticResource MaterialDesignRaisedDarkButton}" Height="95" Width="95" FontSize="25" Margin="5"></Button>
-            <Button Content="£5" Style="{StaticResource MaterialDesignRaisedLightButton}" Height="95" Width="95" FontSize="25" Margin="5"></Button>
+            <Button Content="£5" Style="{StaticResource MaterialDesignRaisedDarkButton}" Height="95" Width="95" FontSize="25" Margin="5"></Button>
         </StackPanel>
             <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1" Height="100">                
                 <Grid>
